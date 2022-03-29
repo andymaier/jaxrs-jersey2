@@ -1,0 +1,230 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Cataloge API",
+    "description": "Cataloge API",
+    "version": "1"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/systems62.com/cataloge/1",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "paths": {
+    "/article/": {
+      "get": {
+        "tags": [
+          "Shop"
+        ],
+        "summary": "Get all articles",
+        "description": "Get all articles of this Service",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/article"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Shop"
+        ],
+        "summary": "Creates an Article",
+        "description": "Test\n======\n\nCreates a new ***Articles*** based on the given requestBody.\n\n- name\n- price\n\n1. First ordered list item\n2. Another item\n⋅⋅* Unordered sub-list. \n    1. Actual numbers don't matter, just that it's a number\n  ⋅⋅1. Ordered sub-list\n4. And another item.\n\n[I'm an inline-style link with title](https://www.google.com \"Google's Homepage\")\n\n![alt text](https://www.predic8.de/logo6.png \"Logo Title Text 1\")\n",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/article"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "Location": {
+                "description": "URI of the new Article",
+                "style": "simple",
+                "explode": false,
+                "schema": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              },
+              "Test": {
+                "description": "testheader",
+                "style": "simple",
+                "explode": false,
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/article/{aid}": {
+      "get": {
+        "tags": [
+          "Shop"
+        ],
+        "summary": "Get specified article",
+        "description": "Get specified article",
+        "parameters": [
+          {
+            "name": "aid",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK done",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/article"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Shop"
+        ],
+        "summary": "Changes an article",
+        "description": "Changes an article",
+        "parameters": [
+          {
+            "name": "aid",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/article"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Shop"
+        ],
+        "summary": "Deletes an article",
+        "description": "Deletes an article",
+        "parameters": [
+          {
+            "name": "aid",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Shop"
+        ],
+        "summary": "Partial changes on article",
+        "description": "Partial changes on article",
+        "parameters": [
+          {
+            "name": "aid",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/article"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "article": {
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "example": {
+            "type": "string",
+            "description": "Name of the article",
+            "example": "Test"
+          },
+          "name": {
+            "maxLength": 20,
+            "type": "string",
+            "example": "testname"
+          },
+          "price": {
+            "minimum": 0,
+            "type": "number",
+            "description": "Price of the article",
+            "example": 4.55
+          }
+        }
+      }
+    }
+  }
+}
